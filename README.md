@@ -55,6 +55,8 @@ The runner resolves paths from the repository location, independently of the cal
 
 ## Verification commands
 
+The [verification README](verification/README.md) explains the checking flow, module responsibilities, focused debugging, and run artifacts. The [verification plan](docs/verification_plan.md) contains the complete test and coverage inventory.
+
 ```text
 python scripts/run_tests.py --list
 python scripts/run_tests.py --suite unit
@@ -107,6 +109,6 @@ Further details are in [microarchitecture.md](docs/microarchitecture.md), [verif
 
 ## Validation scope
 
-The recorded toolchain uses Icarus/vvp 11.0, Python 3.12.14, Verilator 5.020, and Yosys 0.33. Generic synthesis of `cpu_core` and its RTL dependencies produces 22,382 leaf cells: 5,882 flip-flop cells and 16,500 combinational cells. This includes trace/debug logic and excludes external instruction/data RAM. Technology-specific utilization, timing, power, formal proof, and RTL/netlist equivalence remain outside the measured scope. Warm-reset verification uses a shared reset for the core and memory-model transaction state; RAM contents persist.
+The recorded toolchain uses Icarus/vvp 11.0, Python 3.12.6, Verilator 5.020, and Yosys 0.33. Generic synthesis of `cpu_core` and its RTL dependencies produces 22,382 leaf cells: 5,882 flip-flop cells and 16,500 combinational cells. This includes trace/debug logic and excludes external instruction/data RAM. Technology-specific utilization, timing, power, formal proof, and RTL/netlist equivalence remain outside the measured scope. Warm-reset verification uses a shared reset for the core and memory-model transaction state; RAM contents persist.
 
 Signoff verifies that all declared source/configuration inputs retain their pre-run SHA-256 values. The [checked-in signoff snapshot](docs/assets/signoff_summary.json) preserves the tested hashes and tool results. The regression covers the declared tests and coverage gates without claiming exhaustive CPU correctness.

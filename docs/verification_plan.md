@@ -1,5 +1,7 @@
 # Verification Plan
 
+The [verification README](../verification/README.md) provides setup, commands, module responsibilities, and artifact/debugging guidance. This plan defines the test inventory and acceptance requirements.
+
 ## Objective and qualification rule
 
 The reference model owns its own program, PC, GPRs, CSRs, and byte memory. RTL retirement events never choose the model's control-flow path or expected operands. A run passes only when all applicable layers below pass; simulator exit zero or a log containing `PASS` is not sufficient.
