@@ -4,11 +4,68 @@ This package verifies the CPU's architectural behavior with an independently exe
 
 The [verification plan](../docs/verification_plan.md) defines the test inventory and coverage requirements. The [validation report](../docs/validation_report.md) and [signoff summary](../docs/assets/signoff_summary.json) record measured results and the source hashes associated with them.
 
+[Measured waveforms](#measured-waveforms) · [Running tests](#running-tests) · [Results and artifacts](#results-and-artifacts)
+
 ## Verification flow
 
 ![Shared program inputs, RTL simulation, independent ISS execution, online monitors, and offline architectural comparison](../docs/assets/architecture_verification.svg)
 
 Assembly and initial RAM contents feed both execution paths. The assembler is shared; the ISS owns its own PC, registers, memory, and instruction semantics. Observed RTL results do not select its expected operands or control-flow path. During comparison, the checker steps a fresh ISS; saved expected traces are diagnostic artifacts.
+
+## Measured waveforms
+
+These waveforms show actual Icarus VCD samples for two controlled fault-injection tests. Each figure compares an isolated mutation in the upper red panel with the corrected RTL in the lower green panel. The horizontal axis is absolute simulation time in nanoseconds, with a 10 ns clock. The gold band marks the decision interval; the dashed line marks the checked retirement event. Transitions show the final settled value at each timestamp.
+
+### Forwarding priority
+
+The instruction sequence writes `r1` twice before consuming it:
+
+```asm
+addi r1, r0, 1
+addi r1, r1, 2
+add  r2, r1, r1
+```
+
+![Measured forwarding signals and retirement result: injected WB-priority fault versus corrected EX/MEM priority](../docs/assets/forwarding_waveform.svg)
+
+| Observation | Injected fault | Corrected RTL |
+|---|---|---|
+| Operand selection at 115 ns | `forwardA=01` selects the older WB value; `fwdA=1`. | `forwardA=10` selects the newer EX/MEM value; `fwdA=3`. |
+| Retirement at 145 ns, PC `0x08` | `r2=4`; the checker reports `TRACE_MISMATCH`. | `r2=6`, matching the ISS. |
+
+Both producer values are visible at the decision: EX/MEM holds `3`, while MEM/WB holds `1`. The mutation changes source-A priority, so the faulty ADD computes `1 + 3`; the corrected ADD computes `3 + 3`. The key signals connect the forwarding decision to its later architectural result, rather than checking the mux selection alone.
+
+### Byte-lane selection and sign extension
+
+For `lb r3, 2(r10)` with `r10=0x40`, the raw little-endian RAM word is `0x80ff7f01`. Address `0x42` selects byte `0xff`, which a signed byte load must extend to `0xffffffff`.
+
+![Measured load response, byte-lane selection, and retirement result: injected wrong lane versus corrected signed byte load](../docs/assets/byte_lane_waveform.svg)
+
+| Observation | Injected fault | Corrected RTL |
+|---|---|---|
+| Load response at 165 ns, address `0x42` | Selects bits `[15:8]`; `external_load_value=0x0000007f`. | Selects bits `[23:16]`; `external_load_value=0xffffffff`. |
+| Retirement at 185 ns, PC `0x0c` | `r3=0x0000007f`; the checker reports `TRACE_MISMATCH`. | `r3=0xffffffff`, matching the ISS. |
+
+The bus response is identical in both runs. The divergence occurs inside load-lane selection and remains visible in `trace_rd_data` at retirement. These are deliberate mutation comparisons; the [design case studies](../docs/showcase.md) distinguish them from the historical fixes.
+
+### Regenerating and inspecting waveforms
+
+From the repository root, regenerate both illustrations and their measured evidence:
+
+```powershell
+python scripts/build_showcase.py
+```
+
+This runs three positive configurations and two isolated mutations, validates their trace/state results, and updates the two SVGs plus [showcase_evidence.json](../docs/assets/showcase_evidence.json). The metadata records raw VCD/CSV artifact paths, hashes, and exact decision/retirement samples. It complements the full signoff results.
+
+Waveforms for ordinary verification runs are enabled with `--waves`:
+
+```powershell
+python scripts/run_tests.py --suite directed --test memory_lanes --waves
+python scripts/run_tests.py --suite signoff --waves
+```
+
+Each assembly-driven RTL or mutation case writes `waves.vcd` beside its trace and simulation log under the reported run directory. Full signoff retains the separate unit/reset acceptance rules; those protocol tests do not produce these program waveforms. A VCD viewer such as GTKWave can inspect the raw files. VCD dumps stay in ignored `build/`; the checked-in SVGs provide the readable GitHub view.
 
 ## Components
 
@@ -116,7 +173,7 @@ The manifest points to the exact artifact directory for each case. Failure categ
 
 New directed programs live in [tests/programs/](../tests/programs/). Their test-plan entries declare a unique ID, program path, completion label, suite/profile membership, requirement mapping, and required coverage bins; initial RAM values are optional. The selected test exercises the full normal acceptance path before inclusion in fixed signoff. Checker/reference-model changes also need negative tests showing that incorrect execution is rejected.
 
-The [showcase builder](../scripts/build_showcase.py) regenerates measured fault-versus-corrected waveforms. After full signoff, the [evidence exporter](../scripts/export_evidence.py) validates source/artifact hashes and writes the portable summary:
+After full signoff, the [evidence exporter](../scripts/export_evidence.py) validates source/artifact hashes and writes the portable summary:
 
 ```powershell
 python scripts/export_evidence.py --manifest build/runs/<run-id>/manifest.json
