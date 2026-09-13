@@ -1,0 +1,83 @@
+name: CPU verification
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      full_signoff:
+        description: Run the 32-seed by four-profile signoff matrix
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: ${{ matrix.suite }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [unit, directed]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install and record Icarus
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes iverilog
+          iverilog -V
+          vvp -V
+      - name: Run fresh regression
+        run: python scripts/run_tests.py --suite "${{ matrix.suite }}" --sim iverilog
+      - name: Preserve manifests and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpu-${{ matrix.suite }}-${{ github.run_id }}
+          path: build/runs/
+          if-no-files-found: error
+
+  full-signoff:
+    if: github.event_name == 'workflow_dispatch' && inputs.full_signoff
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install and record verification tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes iverilog verilator yosys
+          iverilog -V
+          vvp -V
+          verilator --version
+          yosys -V
+      - name: Run full signoff
+        run: python scripts/run_tests.py --suite signoff --sim iverilog
+      - name: Require lint and synthesis evidence
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          manifests = list(Path('build/runs').glob('*/manifest.json'))
+          assert len(manifests) == 1, 'Expected one fresh signoff manifest'
+          report = json.loads(manifests[0].read_text())['independent_toolchain']
+          assert report['status'] == 'PASS', 'Independent toolchain did not pass'
+          assert {item['name']: item['status'] for item in report['checks']} == {
+              'verilator': 'PASS', 'yosys': 'PASS'
+          }, 'Both lint and synthesis must pass'
+          PY
+      - name: Preserve signoff evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpu-signoff-${{ github.run_id }}
+          path: build/runs/
+          if-no-files-found: error

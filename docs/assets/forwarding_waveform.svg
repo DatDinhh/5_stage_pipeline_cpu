@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="1110" viewBox="0 0 1360 1110" role="img" aria-labelledby="title desc">
+<title id="title">Forwarding priority: the newest producer must win</title>
+<desc id="desc">Real Icarus VCD transitions. Fault-injected isolated mutation compared with current repaired RTL. Absolute simulation time in nanoseconds; delta updates at a timestamp show their final settled value.</desc>
+<style>text{font-family:Arial,sans-serif}.mono{font-family:Consolas,monospace}</style>
+<rect width="1360" height="1110" fill="#f5f7fb"/>
+<text x="44" y="43" font-size="13" fill="#526780" >MEASURED RTL WAVEFORMS / TWO CONTROLLED RUNS</text>
+<text x="44" y="82" font-size="28" fill="#11263f" >Forwarding priority: the newest producer must win</text>
+<text x="44" y="111" font-size="16" fill="#25364b" >addi r1, r0, 1 → addi r1, r1, 2 → add r2, r1, r1     |     correct r2 = 3 + 3 = 6; injected fault gives 1 + 3 = 4</text>
+<text x="44" y="139" font-size="13" fill="#526780" >True VCD transitions · 10 ns clock · axes show absolute simulation time (ns) · final delta value at each timestamp</text>
+<rect x="28" y="164" width="1304" height="420" rx="12" fill="white" stroke="#d8e0ea"/>
+<rect x="28" y="164" width="7" height="420" rx="3" fill="#bb3c42"/>
+<text x="48" y="194" font-size="18" fill="#bb3c42" >Fault injected / WB incorrectly wins</text>
+<text x="48" y="221" font-size="14" fill="#25364b" >Checked retirement: r2 = 0x00000004; independent ISS expects 0x00000006. Mutation killed by TRACE_MISMATCH.</text>
+<text x="48" y="243" font-size="12" fill="#65778b" >Signal / actual RTL name</text>
+<rect x="504.8" y="246" width="202.8" height="324" fill="#fff3d9"/>
+<line x1="302" y1="244" x2="302" y2="568" stroke="#e4eaf2"/>
+<text x="302" y="240" font-size="12" fill="#65778b" text-anchor="middle">105</text>
+<line x1="504.8" y1="244" x2="504.8" y2="568" stroke="#e4eaf2"/>
+<text x="504.8" y="240" font-size="12" fill="#65778b" text-anchor="middle">115</text>
+<line x1="707.6" y1="244" x2="707.6" y2="568" stroke="#e4eaf2"/>
+<text x="707.6" y="240" font-size="12" fill="#65778b" text-anchor="middle">125</text>
+<line x1="910.4" y1="244" x2="910.4" y2="568" stroke="#e4eaf2"/>
+<text x="910.4" y="240" font-size="12" fill="#65778b" text-anchor="middle">135</text>
+<line x1="1113.2" y1="244" x2="1113.2" y2="568" stroke="#e4eaf2"/>
+<text x="1113.2" y="240" font-size="12" fill="#65778b" text-anchor="middle">145</text>
+<line x1="1316" y1="244" x2="1316" y2="568" stroke="#e4eaf2"/>
+<text x="1316" y="240" font-size="12" fill="#65778b" text-anchor="middle">155</text>
+<line x1="1113.2" y1="244" x2="1113.2" y2="568" stroke="#bb3c42" stroke-dasharray="4 4"/>
+<text x="48" y="270" font-size="13" fill="#25364b" class="mono">clk</text>
+<polyline points="302,258 403.4,258 403.4,275 504.8,275 504.8,258 606.2,258 606.2,275 707.6,275 707.6,258 809,258 809,275 910.4,275 910.4,258 1011.8,258 1011.8,275 1113.2,275 1113.2,258 1214.6,258 1214.6,275 1316,275" fill="none" stroke="#bb3c42" stroke-width="2"/>
+<text x="48" y="306" font-size="13" fill="#25364b" class="mono">ID_EX_pc</text>
+<path d="M 302,302 L 306,292 H 500.8 L 504.8,302 L 500.8,313 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="403.4" y="307" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x04</text>
+<path d="M 504.8,302 L 508.8,292 H 703.6 L 707.6,302 L 703.6,313 H 508.8 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="606.2" y="307" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x08</text>
+<path d="M 707.6,302 L 711.6,292 H 906.4 L 910.4,302 L 906.4,313 H 711.6 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="809" y="307" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x0c</text>
+<path d="M 910.4,302 L 914.4,292 H 1109.2 L 1113.2,302 L 1109.2,313 H 914.4 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1011.8" y="307" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x10</text>
+<path d="M 1113.2,302 L 1117.2,292 H 1312 L 1316,302 L 1312,313 H 1117.2 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1214.6" y="307" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x14</text>
+<text x="48" y="342" font-size="13" fill="#25364b" class="mono">forwardA (00 RF / 01 WB / 10 EX)</text>
+<path d="M 302,338 L 306,328 H 500.8 L 504.8,338 L 500.8,349 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="403.4" y="343" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">10 EX</text>
+<path d="M 504.8,338 L 508.8,328 H 703.6 L 707.6,338 L 703.6,349 H 508.8 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="606.2" y="343" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">01 WB</text>
+<path d="M 707.6,338 L 711.6,328 H 906.4 L 910.4,338 L 906.4,349 H 711.6 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="809" y="343" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">10 EX</text>
+<path d="M 910.4,338 L 914.4,328 H 1312 L 1316,338 L 1312,349 H 914.4 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1113.2" y="343" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">00 RF</text>
+<text x="48" y="378" font-size="13" fill="#25364b" class="mono">EX/MEM result (decimal)</text>
+<path d="M 302,374 L 306,364 H 500.8 L 504.8,374 L 500.8,385 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="403.4" y="379" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">1</text>
+<path d="M 504.8,374 L 508.8,364 H 703.6 L 707.6,374 L 703.6,385 H 508.8 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="606.2" y="379" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">3</text>
+<path d="M 707.6,374 L 711.6,364 H 906.4 L 910.4,374 L 906.4,385 H 711.6 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="809" y="379" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">4</text>
+<path d="M 910.4,374 L 914.4,364 H 1109.2 L 1113.2,374 L 1109.2,385 H 914.4 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1011.8" y="379" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">1</text>
+<path d="M 1113.2,374 L 1117.2,364 H 1312 L 1316,374 L 1312,385 H 1117.2 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1214.6" y="379" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0</text>
+<text x="48" y="414" font-size="13" fill="#25364b" class="mono">MEM/WB result (decimal)</text>
+<path d="M 302,410 L 306,400 H 500.8 L 504.8,410 L 500.8,421 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="403.4" y="415" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0</text>
+<path d="M 504.8,410 L 508.8,400 H 703.6 L 707.6,410 L 703.6,421 H 508.8 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="606.2" y="415" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">1</text>
+<path d="M 707.6,410 L 711.6,400 H 906.4 L 910.4,410 L 906.4,421 H 711.6 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="809" y="415" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">3</text>
+<path d="M 910.4,410 L 914.4,400 H 1109.2 L 1113.2,410 L 1109.2,421 H 914.4 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1011.8" y="415" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">4</text>
+<path d="M 1113.2,410 L 1117.2,400 H 1312 L 1316,410 L 1312,421 H 1117.2 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1214.6" y="415" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">1</text>
+<text x="48" y="450" font-size="13" fill="#25364b" class="mono">forwarded operand A (decimal)</text>
+<path d="M 302,446 L 306,436 H 703.6 L 707.6,446 L 703.6,457 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="504.8" y="451" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">1</text>
+<path d="M 707.6,446 L 711.6,436 H 906.4 L 910.4,446 L 906.4,457 H 711.6 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="809" y="451" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">4</text>
+<path d="M 910.4,446 L 914.4,436 H 1312 L 1316,446 L 1312,457 H 914.4 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1113.2" y="451" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0</text>
+<text x="48" y="486" font-size="13" fill="#25364b" class="mono">trace_valid</text>
+<polyline points="302,491 707.6,491 707.6,474 1316,474" fill="none" stroke="#bb3c42" stroke-width="2"/>
+<text x="48" y="522" font-size="13" fill="#25364b" class="mono">trace_pc</text>
+<path d="M 302,518 L 306,508 H 906.4 L 910.4,518 L 906.4,529 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="606.2" y="523" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x00</text>
+<path d="M 910.4,518 L 914.4,508 H 1109.2 L 1113.2,518 L 1109.2,529 H 914.4 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1011.8" y="523" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x04</text>
+<path d="M 1113.2,518 L 1117.2,508 H 1312 L 1316,518 L 1312,529 H 1117.2 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1214.6" y="523" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x08</text>
+<text x="48" y="558" font-size="13" fill="#25364b" class="mono">trace_rd_data</text>
+<path d="M 302,554 L 306,544 H 703.6 L 707.6,554 L 703.6,565 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="504.8" y="559" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x00000000</text>
+<path d="M 707.6,554 L 711.6,544 H 906.4 L 910.4,554 L 906.4,565 H 711.6 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="809" y="559" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x00000001</text>
+<path d="M 910.4,554 L 914.4,544 H 1109.2 L 1113.2,554 L 1109.2,565 H 914.4 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1011.8" y="559" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x00000003</text>
+<path d="M 1113.2,554 L 1117.2,544 H 1312 L 1316,554 L 1312,565 H 1117.2 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1214.6" y="559" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x00000004</text>
+<text x="48" y="579" font-size="12" fill="#526780" >Gold band: ADD operand selection. Dashed line: checked retirement at PC 0x8, cycle 9.</text>
+<rect x="28" y="596" width="1304" height="420" rx="12" fill="white" stroke="#d8e0ea"/>
+<rect x="28" y="596" width="7" height="420" rx="3" fill="#167755"/>
+<text x="48" y="626" font-size="18" fill="#167755" >Repaired RTL / newer EX/MEM value wins</text>
+<text x="48" y="653" font-size="14" fill="#25364b" >Checked retirement: r2 = 0x00000006; independent ISS expects 0x00000006. Complete trace and final architectural state PASS.</text>
+<text x="48" y="675" font-size="12" fill="#65778b" >Signal / actual RTL name</text>
+<rect x="504.8" y="678" width="202.8" height="324" fill="#fff3d9"/>
+<line x1="302" y1="676" x2="302" y2="1000" stroke="#e4eaf2"/>
+<text x="302" y="672" font-size="12" fill="#65778b" text-anchor="middle">105</text>
+<line x1="504.8" y1="676" x2="504.8" y2="1000" stroke="#e4eaf2"/>
+<text x="504.8" y="672" font-size="12" fill="#65778b" text-anchor="middle">115</text>
+<line x1="707.6" y1="676" x2="707.6" y2="1000" stroke="#e4eaf2"/>
+<text x="707.6" y="672" font-size="12" fill="#65778b" text-anchor="middle">125</text>
+<line x1="910.4" y1="676" x2="910.4" y2="1000" stroke="#e4eaf2"/>
+<text x="910.4" y="672" font-size="12" fill="#65778b" text-anchor="middle">135</text>
+<line x1="1113.2" y1="676" x2="1113.2" y2="1000" stroke="#e4eaf2"/>
+<text x="1113.2" y="672" font-size="12" fill="#65778b" text-anchor="middle">145</text>
+<line x1="1316" y1="676" x2="1316" y2="1000" stroke="#e4eaf2"/>
+<text x="1316" y="672" font-size="12" fill="#65778b" text-anchor="middle">155</text>
+<line x1="1113.2" y1="676" x2="1113.2" y2="1000" stroke="#167755" stroke-dasharray="4 4"/>
+<text x="48" y="702" font-size="13" fill="#25364b" class="mono">clk</text>
+<polyline points="302,690 403.4,690 403.4,707 504.8,707 504.8,690 606.2,690 606.2,707 707.6,707 707.6,690 809,690 809,707 910.4,707 910.4,690 1011.8,690 1011.8,707 1113.2,707 1113.2,690 1214.6,690 1214.6,707 1316,707" fill="none" stroke="#167755" stroke-width="2"/>
+<text x="48" y="738" font-size="13" fill="#25364b" class="mono">ID_EX_pc</text>
+<path d="M 302,734 L 306,724 H 500.8 L 504.8,734 L 500.8,745 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="403.4" y="739" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x04</text>
+<path d="M 504.8,734 L 508.8,724 H 703.6 L 707.6,734 L 703.6,745 H 508.8 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="606.2" y="739" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x08</text>
+<path d="M 707.6,734 L 711.6,724 H 906.4 L 910.4,734 L 906.4,745 H 711.6 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="809" y="739" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x0c</text>
+<path d="M 910.4,734 L 914.4,724 H 1109.2 L 1113.2,734 L 1109.2,745 H 914.4 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1011.8" y="739" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x10</text>
+<path d="M 1113.2,734 L 1117.2,724 H 1312 L 1316,734 L 1312,745 H 1117.2 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1214.6" y="739" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x14</text>
+<text x="48" y="774" font-size="13" fill="#25364b" class="mono">forwardA (00 RF / 01 WB / 10 EX)</text>
+<path d="M 302,770 L 306,760 H 906.4 L 910.4,770 L 906.4,781 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="606.2" y="775" font-size="13" fill="#167755" class="mono" text-anchor="middle">10 EX</text>
+<path d="M 910.4,770 L 914.4,760 H 1312 L 1316,770 L 1312,781 H 914.4 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1113.2" y="775" font-size="13" fill="#167755" class="mono" text-anchor="middle">00 RF</text>
+<text x="48" y="810" font-size="13" fill="#25364b" class="mono">EX/MEM result (decimal)</text>
+<path d="M 302,806 L 306,796 H 500.8 L 504.8,806 L 500.8,817 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="403.4" y="811" font-size="13" fill="#167755" class="mono" text-anchor="middle">1</text>
+<path d="M 504.8,806 L 508.8,796 H 703.6 L 707.6,806 L 703.6,817 H 508.8 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="606.2" y="811" font-size="13" fill="#167755" class="mono" text-anchor="middle">3</text>
+<path d="M 707.6,806 L 711.6,796 H 906.4 L 910.4,806 L 906.4,817 H 711.6 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="809" y="811" font-size="13" fill="#167755" class="mono" text-anchor="middle">6</text>
+<path d="M 910.4,806 L 914.4,796 H 1109.2 L 1113.2,806 L 1109.2,817 H 914.4 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1011.8" y="811" font-size="13" fill="#167755" class="mono" text-anchor="middle">3</text>
+<path d="M 1113.2,806 L 1117.2,796 H 1312 L 1316,806 L 1312,817 H 1117.2 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1214.6" y="811" font-size="13" fill="#167755" class="mono" text-anchor="middle">0</text>
+<text x="48" y="846" font-size="13" fill="#25364b" class="mono">MEM/WB result (decimal)</text>
+<path d="M 302,842 L 306,832 H 500.8 L 504.8,842 L 500.8,853 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="403.4" y="847" font-size="13" fill="#167755" class="mono" text-anchor="middle">0</text>
+<path d="M 504.8,842 L 508.8,832 H 703.6 L 707.6,842 L 703.6,853 H 508.8 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="606.2" y="847" font-size="13" fill="#167755" class="mono" text-anchor="middle">1</text>
+<path d="M 707.6,842 L 711.6,832 H 906.4 L 910.4,842 L 906.4,853 H 711.6 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="809" y="847" font-size="13" fill="#167755" class="mono" text-anchor="middle">3</text>
+<path d="M 910.4,842 L 914.4,832 H 1109.2 L 1113.2,842 L 1109.2,853 H 914.4 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1011.8" y="847" font-size="13" fill="#167755" class="mono" text-anchor="middle">6</text>
+<path d="M 1113.2,842 L 1117.2,832 H 1312 L 1316,842 L 1312,853 H 1117.2 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1214.6" y="847" font-size="13" fill="#167755" class="mono" text-anchor="middle">3</text>
+<text x="48" y="882" font-size="13" fill="#25364b" class="mono">forwarded operand A (decimal)</text>
+<path d="M 302,878 L 306,868 H 500.8 L 504.8,878 L 500.8,889 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="403.4" y="883" font-size="13" fill="#167755" class="mono" text-anchor="middle">1</text>
+<path d="M 504.8,878 L 508.8,868 H 703.6 L 707.6,878 L 703.6,889 H 508.8 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="606.2" y="883" font-size="13" fill="#167755" class="mono" text-anchor="middle">3</text>
+<path d="M 707.6,878 L 711.6,868 H 906.4 L 910.4,878 L 906.4,889 H 711.6 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="809" y="883" font-size="13" fill="#167755" class="mono" text-anchor="middle">6</text>
+<path d="M 910.4,878 L 914.4,868 H 1312 L 1316,878 L 1312,889 H 914.4 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1113.2" y="883" font-size="13" fill="#167755" class="mono" text-anchor="middle">0</text>
+<text x="48" y="918" font-size="13" fill="#25364b" class="mono">trace_valid</text>
+<polyline points="302,923 707.6,923 707.6,906 1316,906" fill="none" stroke="#167755" stroke-width="2"/>
+<text x="48" y="954" font-size="13" fill="#25364b" class="mono">trace_pc</text>
+<path d="M 302,950 L 306,940 H 906.4 L 910.4,950 L 906.4,961 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="606.2" y="955" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x00</text>
+<path d="M 910.4,950 L 914.4,940 H 1109.2 L 1113.2,950 L 1109.2,961 H 914.4 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1011.8" y="955" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x04</text>
+<path d="M 1113.2,950 L 1117.2,940 H 1312 L 1316,950 L 1312,961 H 1117.2 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1214.6" y="955" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x08</text>
+<text x="48" y="990" font-size="13" fill="#25364b" class="mono">trace_rd_data</text>
+<path d="M 302,986 L 306,976 H 703.6 L 707.6,986 L 703.6,997 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="504.8" y="991" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x00000000</text>
+<path d="M 707.6,986 L 711.6,976 H 906.4 L 910.4,986 L 906.4,997 H 711.6 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="809" y="991" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x00000001</text>
+<path d="M 910.4,986 L 914.4,976 H 1109.2 L 1113.2,986 L 1109.2,997 H 914.4 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1011.8" y="991" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x00000003</text>
+<path d="M 1113.2,986 L 1117.2,976 H 1312 L 1316,986 L 1312,997 H 1117.2 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1214.6" y="991" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x00000006</text>
+<text x="48" y="1011" font-size="12" fill="#526780" >Gold band: ADD operand selection. Dashed line: checked retirement at PC 0x8, cycle 9.</text>
+<text x="44" y="1044" font-size="14" fill="#25364b" >Fault injection is a deliberate regression reproduction in a copied source tree; repaired RTL is checked against the independent ISS.</text>
+<text x="44" y="1069" font-size="12" fill="#526780" >VCD/CSV paths, SHA-256 hashes and exact decision samples: showcase_evidence.json</text>
+</svg>

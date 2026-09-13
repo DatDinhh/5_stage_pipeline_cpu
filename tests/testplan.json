@@ -1,0 +1,195 @@
+{
+  "version": 1,
+  "default_max_cycles": 4000,
+  "tests": [
+    {
+      "id": "core_warm_reset",
+      "kind": "protocol",
+      "top": "tb_core_reset",
+      "sources": [
+        "rtl/core/alu.v", "rtl/core/control_unit.v", "rtl/core/reg_file.v",
+        "rtl/core/forwarding_unit.v", "rtl/core/hazard_unit.v", "rtl/core/bpu.v",
+        "rtl/core/csr_perf.v", "rtl/core/cpu_core.v",
+        "sim/mem/rv_rom.v", "sim/mem/rv_mem.v",
+        "sim/score/scoreboard.v", "sim/assertions/assertions.sv",
+        "sim/tb/tb_core_reset.sv"
+      ],
+      "pass_sentinel": "CORE_RESET_PASS:",
+      "negative_cases": [
+        {
+          "id": "core_warm_reset_missing_phase",
+          "plusargs": ["+OMIT_SCENARIO=0"],
+          "failure_sentinel": "required warm-reset scenario coverage missing: reset_ibus_request_pending",
+          "missing_bin": "reset_ibus_request_pending"
+        }
+      ],
+      "suites": ["directed", "signoff"],
+      "requirements": ["CPU-05", "CPU-06", "RESET-PENDING-IBUS", "RESET-PENDING-LOAD", "RESET-PENDING-STORE", "RESET-NO-GHOST", "RESET-VECTOR", "RESET-MEMORY-PERSISTENCE"],
+      "required_bins": [
+        "reset_ibus_request_pending", "reset_ibus_response_wait", "reset_ibus_response_offered",
+        "reset_load_request_pending", "reset_load_response_wait", "reset_load_response_offered",
+        "reset_store_request_pending", "reset_store_response_wait", "reset_store_response_offered",
+        "reset_ownership_clear", "reset_registers_clear", "reset_no_ghost_retire",
+        "reset_no_ghost_store", "reset_memory_persistence", "reset_restart_vector",
+        "reset_restart_complete", "reset_warm_activity"
+      ]
+    },
+    {
+      "id": "bus_load_store",
+      "program": "tests/programs/raw_load_store.asm",
+      "completion": "done",
+      "initial_memory": {"0x00000040": "0x00000003"},
+      "suites": ["directed", "signoff"],
+      "profiles": ["adversarial"],
+      "requirements": ["CPU-03", "CPU-05", "BUS-REQUEST-BACKPRESSURE", "BUS-MEMORY-RESPONSE-HOLD"],
+      "required_bins": ["ibus_backpressure", "dbus_backpressure", "ibus_mem_resp_hold", "dbus_mem_resp_hold", "load_retire", "store_retire"]
+    },
+    {
+      "id": "bus_memory_lanes",
+      "program": "tests/programs/memory_lanes.asm",
+      "completion": "done",
+      "initial_memory": {"0x00000040": "0x80ff7f01"},
+      "suites": ["directed", "signoff"],
+      "profiles": ["adversarial"],
+      "requirements": ["CPU-05", "MEM-LANES", "BUS-HELD-PAYLOAD", "BUS-STORE-EXACTLY-ONCE"],
+      "required_bins": ["ibus_backpressure", "dbus_backpressure", "ibus_mem_resp_hold", "dbus_mem_resp_hold", "store_retire", "load_retire"]
+    },
+    {
+      "id": "bus_control_redirect",
+      "program": "tests/programs/bus_redirect.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["adversarial"],
+      "requirements": ["CPU-04", "CPU-06", "BUS-REDIRECT-WHILE-BLOCKED", "WRONG-PATH"],
+      "required_bins": ["ibus_backpressure", "dbus_backpressure", "ibus_mem_resp_hold", "dbus_mem_resp_hold", "redirect_ibus_blocked", "redirect", "fetch_discard", "branch_taken", "branch_not_taken"]
+    },
+    {
+      "id": "pipe_compat_original",
+      "program": "tests/programs/compat_original.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast", "stress"],
+      "requirements": ["CPU-01", "CPU-05", "CPU-07", "PIPE-RETIRE", "MEM-LW-SW"],
+      "required_bins": ["store_retire", "load_retire", "branch_not_taken"]
+    },
+    {
+      "id": "pipe_replay_self_increment",
+      "program": "tests/programs/replay_self_increment.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast", "stress"],
+      "requirements": ["CPU-01", "CPU-07", "STORE-EXACTLY-ONCE"],
+      "required_bins": ["store_retire"]
+    },
+    {
+      "id": "raw_forwarding_priority",
+      "program": "tests/programs/forwarding_priority.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast"],
+      "requirements": ["CPU-02", "RAW-NEWEST", "RAW-TWO-SOURCE"],
+      "required_bins": ["fwd_ex_a", "fwd_ex_b", "fwd_double_a", "fwd_double_b"]
+    },
+    {
+      "id": "raw_load_store",
+      "program": "tests/programs/raw_load_store.asm",
+      "completion": "done",
+      "initial_memory": {"0x00000040": "0x00000003"},
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast", "dslow"],
+      "requirements": ["CPU-02", "CPU-03", "CPU-05", "LOAD-USE", "STORE-BASE-DATA", "SB-SH"],
+      "required_bins": ["load_hazard", "exmem_wait", "store_retire", "load_retire"]
+    },
+    {
+      "id": "alu_decode_matrix",
+      "program": "tests/programs/alu_decode_matrix.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast"],
+      "requirements": ["ALU-MATRIX", "DECODE-USAGE", "SHIFT-0-31", "WRAP", "IMMEDIATE-EXT"]
+    },
+    {
+      "id": "memory_lanes",
+      "program": "tests/programs/memory_lanes.asm",
+      "completion": "done",
+      "initial_memory": {"0x00000040": "0x80ff7f01"},
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast", "dslow"],
+      "requirements": ["MEM-LANES", "MEM-SIGNEDNESS", "MEM-PRESERVE", "LOAD-R0"],
+      "required_bins": ["store_retire", "load_retire", "load_hazard"]
+    },
+    {
+      "id": "control_branch_paths",
+      "program": "tests/programs/branch_paths.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast", "stress"],
+      "requirements": ["CPU-04", "CPU-06", "BRANCH-TAKEN-NOT", "BRANCH-BACKWARD", "WRONG-PATH"],
+      "required_bins": ["branch_taken", "branch_not_taken", "redirect", "fetch_discard"]
+    },
+    {
+      "id": "control_jump_jal",
+      "program": "tests/programs/jump_jal.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast"],
+      "requirements": ["CPU-02", "CPU-04", "J-JAL", "JAL-LINK", "WRONG-PATH"],
+      "required_bins": ["redirect"]
+    },
+    {
+      "id": "trap_eret_load",
+      "program": "tests/programs/trap_eret_load.asm",
+      "completion": "done",
+      "initial_memory": {"0x00000000": "0x12345678"},
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast", "stress"],
+      "requirements": ["TRAP-MISALIGNED-LOAD", "EPC-CAUSE", "ERET-RETRY", "PRECISE-TRAP"],
+      "required_bins": ["trap", "redirect", "load_retire"]
+    },
+    {
+      "id": "trap_eret_store",
+      "program": "tests/programs/trap_eret_store.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast"],
+      "requirements": ["TRAP-MISALIGNED-STORE", "ERET-RETRY", "SH"],
+      "required_bins": ["trap", "store_retire", "load_retire"]
+    },
+    {
+      "id": "trap_illegal_wrong_path",
+      "program": "tests/programs/illegal_wrong_path.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast"],
+      "requirements": ["ILLEGAL", "CPU-04", "WRONG-PATH-STORE"],
+      "required_bins": ["trap", "redirect"]
+    },
+    {
+      "id": "csr_read",
+      "program": "tests/programs/csr_read.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast"],
+      "requirements": ["CSR-INSTRET", "CSR-EPC-CAUSE", "CSR-NO-DBUS"],
+      "required_bins": ["load_retire"]
+    },
+    {
+      "id": "trap_csr_write",
+      "program": "tests/programs/csr_write_trap.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast"],
+      "requirements": ["CSR-PERMISSION", "PRECISE-TRAP"],
+      "required_bins": ["trap", "redirect"]
+    },
+    {
+      "id": "trap_unmapped_recover",
+      "program": "tests/programs/unmapped_recover.asm",
+      "completion": "done",
+      "suites": ["directed", "signoff"],
+      "profiles": ["fast"],
+      "requirements": ["UNMAPPED-LOAD", "ERET-RETRY"],
+      "required_bins": ["trap", "load_retire"]
+    }
+  ]
+}

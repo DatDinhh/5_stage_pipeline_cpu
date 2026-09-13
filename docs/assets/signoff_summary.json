@@ -1,0 +1,336 @@
+{
+  "aggregate_coverage": {
+    "branch_not_taken": 136,
+    "branch_taken": 521,
+    "dbus_backpressure": 108,
+    "dbus_mem_resp_hold": 324,
+    "dbus_resp_hold": 0,
+    "exmem_wait": 9462,
+    "fetch_discard": 554,
+    "fwd_blocked": 605,
+    "fwd_double_a": 144,
+    "fwd_double_b": 82,
+    "fwd_ex_a": 894,
+    "fwd_ex_b": 328,
+    "fwd_wb_a": 170,
+    "fwd_wb_b": 235,
+    "ibus_backpressure": 326,
+    "ibus_mem_resp_hold": 5351,
+    "ibus_resp_hold": 5221,
+    "load_hazard": 147,
+    "load_retire": 1230,
+    "mispredict": 532,
+    "redirect": 538,
+    "redirect_ibus_blocked": 1,
+    "reset_ibus_request_pending": 1,
+    "reset_ibus_response_offered": 1,
+    "reset_ibus_response_wait": 1,
+    "reset_load_request_pending": 1,
+    "reset_load_response_offered": 1,
+    "reset_load_response_wait": 1,
+    "reset_memory_persistence": 9,
+    "reset_no_ghost_retire": 9,
+    "reset_no_ghost_store": 9,
+    "reset_ownership_clear": 9,
+    "reset_registers_clear": 9,
+    "reset_restart_complete": 9,
+    "reset_restart_vector": 9,
+    "reset_store_request_pending": 1,
+    "reset_store_response_offered": 1,
+    "reset_store_response_wait": 1,
+    "reset_warm_activity": 9,
+    "store_retire": 1138,
+    "trap": 6,
+    "wb_id_rs": 253,
+    "wb_id_rt": 161,
+    "write_r0": 371
+  },
+  "duration_seconds": 104.554,
+  "manifest": "build/runs/run-c7bbc227678d4c7fb7aa63dddbdc4655/manifest.json",
+  "manifest_sha256": "ebad77d284ffe98bba94a1a29d5a702221a80481878f56bea8c7964ec8b068aa",
+  "mutation_original_tree_rehash": "pass",
+  "python_unit_log": {
+    "path": "build/runs/run-c7bbc227678d4c7fb7aa63dddbdc4655/unit/python/run.log",
+    "sha256": "8568c21f900fb54fb94bde5d2e8fd4f9e6ee17e60fc785ffc7bfafa7751145bc"
+  },
+  "python_unit_tests": 89,
+  "reproduce": "python scripts/run_tests.py --suite signoff",
+  "required_core_coverage": [
+    "fwd_ex_a",
+    "fwd_ex_b",
+    "fwd_double_a",
+    "fwd_double_b",
+    "load_hazard",
+    "exmem_wait",
+    "store_retire",
+    "load_retire",
+    "branch_taken",
+    "branch_not_taken",
+    "redirect",
+    "fetch_discard",
+    "trap",
+    "write_r0",
+    "ibus_resp_hold",
+    "ibus_backpressure",
+    "dbus_backpressure",
+    "ibus_mem_resp_hold",
+    "dbus_mem_resp_hold",
+    "redirect_ibus_blocked"
+  ],
+  "result_counts": {
+    "mutation": 2,
+    "protocol": 1,
+    "protocol_negative": 1,
+    "rtl": 151,
+    "unit": 5
+  },
+  "rtl_cycles": 34284,
+  "schema_version": 2,
+  "scope": "Portable summary of a local finite signoff; raw logs and manifests remain in build. No remote CI or physical implementation claim.",
+  "showcase_evidence": "docs/assets/showcase_evidence.json",
+  "source_hashes": {
+    "rtl/core/alu.v": "45214ab5cd5a1ba92cb227a162a2e6140dbbb1f68b2d697acb594e69d8a8a7a9",
+    "rtl/core/bpu.v": "baeb2cacdb0c4f4a6720e9e25af15e209560a233b5281a83505705354ed90368",
+    "rtl/core/control_unit.v": "9d90343c98ca8858c0b8749bf196add1c7eed62f6426a4760f26015f6ac5379b",
+    "rtl/core/cpu_core.v": "2c158197b73295f6f6d8f1550e500a177594b1237eec32355824607a40152749",
+    "rtl/core/csr_perf.v": "233d15383f771c9512c9fa304d0d97f57c1f15eadbbb96c51b8cf2431095b319",
+    "rtl/core/forwarding_unit.v": "ba40df3bd12962c5c596a1a9a150495e72917eab3496b05dadbd7bc64a9f0aaa",
+    "rtl/core/hazard_unit.v": "d8561226bd1338f27bc4a95d89cfcbf4c98f07cda72b42c10bed3fee3d46abea",
+    "rtl/core/reg_file.v": "0705a9531e1d1723aca445899bd53b61c59cdce08d06fe9cf28d6be9b7d8dbe5",
+    "scripts/__init__.py": "ba15133431410bce13a26c60dede9e01eae2a560d025fac342f775558470477f",
+    "scripts/build_showcase.py": "94fba34a47d7e3776e76c929c02a57a58be706a12c998af512d4bc75498ba258",
+    "scripts/export_evidence.py": "d6233406dd6f9428aeeeacb5c721bb3b20a1744688b6b632ebb85bde9b4f27a5",
+    "scripts/run_tests.ps1": "bb94902e9dd2dafced4c3b61378c6204d98968f8bfbb8b1a2f9134996f694280",
+    "scripts/run_tests.py": "8ebbaed0475b533e52a9e95edcaf1a3ecd22ccefaaca3dd24116df1e932d94a9",
+    "sim/assertions/assertions.sv": "264312a7ecf9bc8af925a9fb1803c7b8809ae402024ff603660d75bce2d1abe4",
+    "sim/mem/rv_bus_shim.sv": "961c1f6434dd141b7b2f661586d6e88e57d5104b2ee7f834373167ad91a865a9",
+    "sim/mem/rv_mem.v": "c4db978fc8cfc6eff3075417f5135cec1e94e5bbf2d9e25b77e265e2d40bcc9a",
+    "sim/mem/rv_rom.v": "d7bf38d32571455f61cb4efed9a8883c0fc2fba4ebbab2be0bf7521e3b5c2cd1",
+    "sim/score/scoreboard.v": "9df24609de7217b22a61eb0074b66f5a0e0873f11403fc9f51b57659ae706aa9",
+    "sim/tb/tb_core.sv": "a773fa54e6637a0d575fa695e795a89e2ca566c0cde0c96aa17525d2c47930c8",
+    "sim/tb/tb_core_reset.sv": "3d158c6f69d000fb62b6228815620b1e62e8bd3d03df13d41d030f70c4886ef8",
+    "sim/tb/tb_csr_perf.sv": "639610625cc6d3e1c0ea3b45129f6257574ac443e1ee3a9465a902fa93d8e789",
+    "sim/tb/tb_forwarding.sv": "4fe7aed221f7ffa94deb4b50ebe6a8ff8945446508a421f4291143fd82f16242",
+    "sim/tb/tb_hazard.sv": "9357c185299b0153bb3772ba231c431d32b1d824356f1bb8fe6476819bcbc564",
+    "sim/tb/tb_mem_model.sv": "ae5ecd4954290a370075fb32fe3e7a734bf9b3a78a1498eb46c57cf43fc4c471",
+    "tests/programs/alu_decode_matrix.asm": "321963933a86ead0ad1bcb355ae20ddc36d1fea5dfb08e2b3014306b97210081",
+    "tests/programs/branch_paths.asm": "79ef1c008876fd167a18c33e757a0755cd12aa2bfd57140ad88f9106bd1463e6",
+    "tests/programs/bus_redirect.asm": "19bd2042e71d551e5d40f833d6b9d07f65059791361ff26ba9209548a48af33c",
+    "tests/programs/compat_original.asm": "42f9d107f5ae269ba54eed19eb5f902f5d596415adb07747985678529d348c07",
+    "tests/programs/csr_read.asm": "ae58ba0d7305ce8e32998323b370f729200e3723832726f0ff849c340d9ae6e0",
+    "tests/programs/csr_write_trap.asm": "fa874201857c7150b30935e9da16175ec71a028e0e76700264d2c58fd202b7bd",
+    "tests/programs/forwarding_priority.asm": "75fd00d84c1a1c839cdfa02979ff67db7ad3b998deae248130c276b400ab2a1f",
+    "tests/programs/illegal_wrong_path.asm": "8925847f6a636e54821de0288d6db8cd4da0899c4edc2a38c9bded2323bc09d4",
+    "tests/programs/jump_jal.asm": "d124d4ad0bed903bea2e5cb7c32d2bde94891c9f3f2ef4bee5432efa64c83abb",
+    "tests/programs/memory_lanes.asm": "1e52ca9ac0a405a98808f22edea79b40b67d8504306b576f9fe1879316633af0",
+    "tests/programs/raw_load_store.asm": "73b65c2a0e09df3ee4f142b703e9ecf6de8306a8392baed1831726ec9f68b48a",
+    "tests/programs/replay_self_increment.asm": "969825d4151db932c1b18ac9c2a6c739f7705362caf9a75c0076250c5c08c69b",
+    "tests/programs/trap_eret_load.asm": "5ee8b823c6db740e4fb5d8935fed245d9cd6fc8109ba856d2efa4009fc22c5ff",
+    "tests/programs/trap_eret_store.asm": "a1c4fe02bf04612dc5a26ff0828c04b613894c856704e76562359d75b11709ab",
+    "tests/programs/unmapped_recover.asm": "e4aa1245fddd47488c9a9e1a8b167901f44ac413327a30a5692aa4ffc1d306ae",
+    "tests/testplan.json": "fd661ab38f2e69ebafd4998c8e0b250a947762a7560de5cbe9103da6f3fcae9d",
+    "verification/__init__.py": "58743dbe3c677b06dd29fc16b701f6b6147dc03cee5d70ac3ad37caf3bba3303",
+    "verification/checker.py": "056d60f8b88e2fb848d641dc79e032f98826a1bdb55f7d5c64fc68d03efca0f2",
+    "verification/encoding.py": "b2c70608b1ffbb733ce74d0ca63e6fef947364bab204c9732b24758da560d035",
+    "verification/iss.py": "bf7cabe4e82ddd7864d04bbbb66a0a0ed2c8e00ad354b00e273fe19e4e957294",
+    "verification/synthesis.py": "e5dd818fac6d8ae475492064d993ddcdc213844689e0ff9cfb690ccb957ca6c4",
+    "verification/tests/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "verification/tests/test_checker.py": "767ecab68b3d2a437a5c94e765010ccc727bd4fed806bcac05d9ea7d1706f2ba",
+    "verification/tests/test_encoding.py": "771af286c7a4169435055e650468b33cac33779c00cae9d69a66c8765f7f37fe",
+    "verification/tests/test_export_evidence.py": "303c1fcebd2fe786b60c469b2a91ab7236dbcafac6aa9ece7b50aabf3ec1500b",
+    "verification/tests/test_iss.py": "477fe5bef7b7506bac737ff0d7fdc02dfcde5882fba369942fa0653e3e94ba61",
+    "verification/tests/test_runner.py": "0fdb9eebc32f0e16c9e8d4178c6b6f0bc821d7968f8f71593c1ebb29a8d2d410",
+    "verification/tests/test_synthesis.py": "e1e0c8f7a10235bde2cbce7ea028d32ed158556c9af780119a1c5f1f4f3bd3a1",
+    "verification/tests/test_toolchain.py": "49e95fdd8dfdc5dbf1b74e00cd11dc121b0dc2e55f4d6a76b6e2a2a8fe47dbfd",
+    "verification/toolchain.py": "9bc6dfc6665140ed5f8ae30717de94b317d69e5592b6ddd3c0924ec91452c218"
+  },
+  "source_input_rehash": {
+    "added": [],
+    "changed": [],
+    "checked_inputs": 54,
+    "removed": [],
+    "status": "pass"
+  },
+  "status": "pass",
+  "toolchain": {
+    "checks": [
+      {
+        "kind": "lint",
+        "name": "verilator",
+        "status": "PASS",
+        "version": "Verilator 5.020",
+        "warning_count": 0,
+        "warning_policy": "default fatal warnings; no warning suppression",
+        "warnings": []
+      },
+      {
+        "artifacts": {
+          "netlist_summary.json": {
+            "path": "build/runs/run-c7bbc227678d4c7fb7aa63dddbdc4655/toolchain/yosys/netlist_summary.json",
+            "sha256": "f46f42ab34fc3b5f72ed48eee605fbea05cfbcec4baf5bad657d33a7e2cc91b4"
+          },
+          "statistics.json": {
+            "path": "build/runs/run-c7bbc227678d4c7fb7aa63dddbdc4655/toolchain/yosys/statistics.json",
+            "sha256": "496bee543c02885d23dabadda7e99aaf8344f4489cf32c43bd19c75569cb73a4"
+          },
+          "synthesized.v": {
+            "path": "build/runs/run-c7bbc227678d4c7fb7aa63dddbdc4655/toolchain/yosys/synthesized.v",
+            "sha256": "22dafb4716be723134e40f1e11e975cbaeccce4a8dd074d88aa11d28db82dabc"
+          }
+        },
+        "kind": "synthesis",
+        "name": "yosys",
+        "netlist": {
+          "path": "build/runs/run-c7bbc227678d4c7fb7aa63dddbdc4655/toolchain/yosys/netlist.json",
+          "sha256": "a126369437c5483d895d2ced17d92a738bc35200eb291aaea9d5e3c36304ece9"
+        },
+        "netlist_summary": {
+          "blackbox_modules": 0,
+          "child_module_instances": 7,
+          "combinational_cells": 16500,
+          "creator": "Yosys 0.33",
+          "latch_cells": 0,
+          "leaf_cells": 22382,
+          "leaf_cells_by_type": {
+            "$_ANDNOT_": 6837,
+            "$_AND_": 597,
+            "$_DFFE_PN0N_": 1,
+            "$_DFFE_PN0P_": 5681,
+            "$_DFFE_PN1P_": 66,
+            "$_DFF_PN0_": 134,
+            "$_MUX_": 1360,
+            "$_NAND_": 440,
+            "$_NOR_": 316,
+            "$_NOT_": 444,
+            "$_ORNOT_": 296,
+            "$_OR_": 5396,
+            "$_XNOR_": 41,
+            "$_XOR_": 773
+          },
+          "module_definitions": 8,
+          "module_instances": 8,
+          "module_instances_by_type": {
+            "$paramod$c7155e8536fb5bc5db61f8483e5cebdfdc12cb4e\\bpu": 1,
+            "alu": 1,
+            "control_unit": 1,
+            "cpu_core": 1,
+            "csr_perf": 1,
+            "forwarding_unit": 1,
+            "hazard_unit": 1,
+            "reg_file": 1
+          },
+          "parameters": {
+            "DMEM_BYTES": 4096,
+            "ENABLE_BPU": 1
+          },
+          "per_module": {
+            "$paramod$c7155e8536fb5bc5db61f8483e5cebdfdc12cb4e\\bpu": {
+              "direct_leaf_cells": 7664,
+              "direct_module_instances": 0,
+              "expanded_leaf_cells": 7664,
+              "expanded_sequential_cells": 2208
+            },
+            "alu": {
+              "direct_leaf_cells": 2029,
+              "direct_module_instances": 0,
+              "expanded_leaf_cells": 2029,
+              "expanded_sequential_cells": 0
+            },
+            "control_unit": {
+              "direct_leaf_cells": 171,
+              "direct_module_instances": 0,
+              "expanded_leaf_cells": 171,
+              "expanded_sequential_cells": 0
+            },
+            "cpu_core": {
+              "direct_leaf_cells": 5958,
+              "direct_module_instances": 7,
+              "expanded_leaf_cells": 22382,
+              "expanded_sequential_cells": 5882
+            },
+            "csr_perf": {
+              "direct_leaf_cells": 1238,
+              "direct_module_instances": 0,
+              "expanded_leaf_cells": 1238,
+              "expanded_sequential_cells": 224
+            },
+            "forwarding_unit": {
+              "direct_leaf_cells": 74,
+              "direct_module_instances": 0,
+              "expanded_leaf_cells": 74,
+              "expanded_sequential_cells": 0
+            },
+            "hazard_unit": {
+              "direct_leaf_cells": 31,
+              "direct_module_instances": 0,
+              "expanded_leaf_cells": 31,
+              "expanded_sequential_cells": 0
+            },
+            "reg_file": {
+              "direct_leaf_cells": 5217,
+              "direct_module_instances": 0,
+              "expanded_leaf_cells": 5217,
+              "expanded_sequential_cells": 992
+            }
+          },
+          "reachable_modules": 8,
+          "residual_memories": 0,
+          "residual_processes": 0,
+          "resource_boundary": "Generic leaf primitive counts only; no target FPGA LUT/BRAM utilization, ASIC area, timing, PPA, or RTL/netlist equivalence claim",
+          "scope": "Generic synthesized cpu_core including trace/debug outputs and live fetch_enable/verification_halt inputs; external instruction/data memories excluded",
+          "sequential_cells": 5882,
+          "status": "PASS",
+          "top": "cpu_core",
+          "top_port_bits": 846,
+          "top_ports": 54,
+          "unresolved_cells": 0
+        },
+        "script": {
+          "path": "build/runs/run-c7bbc227678d4c7fb7aa63dddbdc4655/toolchain/yosys/synthesis.ys",
+          "sha256": "5c18201ba7657056dda8f199d98342a4e32e5ef47c590216239e9426c8c66ec3"
+        },
+        "status": "PASS",
+        "version": "Yosys 0.33",
+        "warning_count": 9,
+        "warnings": [
+          "Warning: Replacing memory \\bht with list of registers. See rtl/core/bpu.v:46",
+          "Warning: Replacing memory \\btb_tag with list of registers. See rtl/core/bpu.v:50",
+          "Warning: Replacing memory \\btb_target with list of registers. See rtl/core/bpu.v:49",
+          "Warning: Replacing memory \\btb_valid with list of registers. See rtl/core/bpu.v:51",
+          "Warning: Replacing memory \\rf with list of registers. See rtl/core/reg_file.v:17"
+        ]
+      }
+    ],
+    "scope": "RTL core only; independent of Icarus simulation",
+    "sources": {
+      "rtl/core/alu.v": "45214ab5cd5a1ba92cb227a162a2e6140dbbb1f68b2d697acb594e69d8a8a7a9",
+      "rtl/core/bpu.v": "baeb2cacdb0c4f4a6720e9e25af15e209560a233b5281a83505705354ed90368",
+      "rtl/core/control_unit.v": "9d90343c98ca8858c0b8749bf196add1c7eed62f6426a4760f26015f6ac5379b",
+      "rtl/core/cpu_core.v": "2c158197b73295f6f6d8f1550e500a177594b1237eec32355824607a40152749",
+      "rtl/core/csr_perf.v": "233d15383f771c9512c9fa304d0d97f57c1f15eadbbb96c51b8cf2431095b319",
+      "rtl/core/forwarding_unit.v": "ba40df3bd12962c5c596a1a9a150495e72917eab3496b05dadbd7bc64a9f0aaa",
+      "rtl/core/hazard_unit.v": "d8561226bd1338f27bc4a95d89cfcbf4c98f07cda72b42c10bed3fee3d46abea",
+      "rtl/core/reg_file.v": "0705a9531e1d1723aca445899bd53b61c59cdce08d06fe9cf28d6be9b7d8dbe5"
+    },
+    "status": "PASS",
+    "synthesis_scope": {
+      "external_memory": "instruction/data RAM are outside cpu_core and excluded",
+      "instrumentation": "default cpu_core includes trace/debug and verification control ports",
+      "parameters": {
+        "DMEM_BYTES": 4096,
+        "ENABLE_BPU": 1
+      },
+      "physical_results": "no area, timing, Fmax, power, or placed/routed implementation",
+      "target": "generic cells; no FPGA device or ASIC cell library"
+    },
+    "top": "cpu_core"
+  },
+  "tools": {
+    "iverilog": "Icarus Verilog 11.0",
+    "python": "Python 3.12.6",
+    "verilator": "Verilator 5.020",
+    "vvp": "Icarus Verilog runtime 11.0",
+    "yosys": "Yosys 0.33"
+  },
+  "total_results": 160
+}

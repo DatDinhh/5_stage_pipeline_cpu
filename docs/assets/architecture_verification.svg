@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+  <title id="title">How this CPU project verifies a program</title>
+  <desc id="desc">Directed assembly and seeded random assembly use a shared encoder. The same program and initial memory feed Icarus RTL simulation and a Python instruction-set simulator. Runtime monitors and a protocol-to-retirement scoreboard observe the simulation. An offline checker steps a fresh ISS against the RTL event trace and compares final registers and all 4 KiB of RAM. Simulator success, completion, coverage and source integrity also gate results recorded in the manifest. Signoff additionally runs unit, reset and negative tests, Verilator lint, and Yosys synthesis.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#64748b"/></marker>
+    <marker id="blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#2563eb"/></marker>
+    <marker id="teal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#0f766e"/></marker>
+    <marker id="purple" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#7c3aed"/></marker>
+  </defs>
+  <rect width="1280" height="820" fill="#f8fafc"/>
+  <g font-family="Segoe UI, Arial, sans-serif" fill="#0f172a">
+    <text x="40" y="47" font-size="30" font-weight="700">How a program earns a PASS</text>
+    <text x="40" y="77" font-size="17" fill="#475569">One shared test image, two executions, and checks at the protocol and architectural boundaries.</text>
+
+    <rect x="40" y="112" width="320" height="49" rx="10" fill="#fff" stroke="#cbd5e1"/>
+    <text x="58" y="143" font-size="19" font-weight="600">Directed assembly tests</text>
+    <rect x="40" y="176" width="320" height="49" rx="10" fill="#fff" stroke="#cbd5e1"/>
+    <text x="58" y="207" font-size="19" font-weight="600">Seeded random assembly</text>
+    <path d="M360 137H405V201H360" fill="none" stroke="#64748b" stroke-width="2"/>
+    <path d="M405 177H455" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="455" y="135" width="370" height="84" rx="12" fill="#fff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="640" y="165" text-anchor="middle" font-size="21" font-weight="700">Shared encoder + test inputs</text>
+    <text x="640" y="192" text-anchor="middle" font-size="16" fill="#475569">Program image + initial RAM + entry PC</text>
+
+    <rect x="911" y="130" width="329" height="94" rx="12" fill="#f1f5f9"/>
+    <text x="930" y="157" font-size="16" font-weight="700">Independent execution model</text>
+    <text x="930" y="180" font-size="15" fill="#475569">The ISS computes architectural results.</text>
+    <text x="930" y="202" font-size="15" fill="#475569">The assembler is shared with the RTL run.</text>
+
+    <path d="M640 219V246H305V276" fill="none" stroke="#2563eb" stroke-width="2.2" marker-end="url(#blue)"/>
+    <path d="M640 219V246H975V276" fill="none" stroke="#0f766e" stroke-width="2.2" marker-end="url(#teal)"/>
+    <circle cx="640" cy="246" r="4" fill="#64748b"/>
+    <rect x="80" y="276" width="450" height="112" rx="13" fill="#eff6ff" stroke="#2563eb" stroke-width="1.7"/>
+    <text x="102" y="307" font-size="22" font-weight="700" fill="#1d4ed8">Icarus RTL simulation</text>
+    <text x="102" y="334" font-size="17">cpu_core + instruction/data memory models</text>
+    <text x="102" y="361" font-size="16" fill="#475569">Real pipeline, bus delays, testbench and bus shims</text>
+    <rect x="750" y="276" width="450" height="112" rx="13" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.7"/>
+    <text x="772" y="307" font-size="22" font-weight="700" fill="#0f766e">Python instruction-set simulator</text>
+    <text x="772" y="334" font-size="17">Architectural model in verification/iss.py</text>
+    <text x="772" y="361" font-size="16" fill="#475569">Decodes instructions and computes their effects</text>
+
+    <path d="M305 388V415H165V442" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#purple)"/>
+    <path d="M305 388V415H470V442" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#blue)"/>
+    <circle cx="305" cy="415" r="3.5" fill="#64748b"/>
+    <path d="M975 388V442" fill="none" stroke="#0f766e" stroke-width="2" marker-end="url(#teal)"/>
+
+    <rect x="40" y="442" width="250" height="110" rx="12" fill="#faf5ff" stroke="#c4b5fd"/>
+    <text x="57" y="469" font-size="20" font-weight="700" fill="#6d28d9">Online monitors</text>
+    <text x="57" y="493" font-size="15">Scoreboard + core_monitors</text>
+    <text x="57" y="516" font-size="15">Observe bus / retirement</text>
+    <text x="57" y="538" font-size="14" fill="#475569">Failures stop the simulation</text>
+    <rect x="330" y="442" width="280" height="110" rx="12" fill="#fff" stroke="#93c5fd"/>
+    <text x="350" y="471" font-size="20" font-weight="700" fill="#1d4ed8">Observed RTL artifacts</text>
+    <text x="350" y="497" font-size="17">trace.csv + state.txt</text>
+    <text x="350" y="524" font-size="15" fill="#475569">Events + final GPRs / RAM</text>
+    <rect x="790" y="442" width="370" height="110" rx="12" fill="#fff" stroke="#5eead4"/>
+    <text x="810" y="471" font-size="20" font-weight="700" fill="#0f766e">Expected events + final state</text>
+    <text x="810" y="497" font-size="16">Fresh ISS steps during comparison</text>
+    <text x="810" y="524" font-size="15" fill="#475569">Saved expected files are diagnostic artifacts</text>
+
+    <path d="M470 552V602" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#blue)"/>
+    <path d="M975 552V580H770V602" fill="none" stroke="#0f766e" stroke-width="2" marker-end="url(#teal)"/>
+    <path d="M165 552V652H400" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#purple)"/>
+    <text x="181" y="621" font-size="14" fill="#6d28d9">Simulator exit and</text>
+    <text x="181" y="641" font-size="14" fill="#6d28d9">monitor status also gate PASS</text>
+
+    <rect x="400" y="602" width="480" height="101" rx="13" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.7"/>
+    <text x="421" y="632" font-size="22" font-weight="700" fill="#6d28d9">Offline trace + state checker</text>
+    <text x="421" y="658" font-size="17">Ordered events + all 32 GPRs + full 4 KiB RAM</text>
+    <text x="421" y="684" font-size="15" fill="#475569">Runner also requires completion and coverage gates</text>
+    <path d="M880 652H930" fill="none" stroke="#7c3aed" stroke-width="2.2" marker-end="url(#purple)"/>
+    <rect x="930" y="610" width="310" height="85" rx="13" fill="#0f172a"/>
+    <text x="949" y="642" font-size="22" font-weight="700" fill="#fff">Result + run manifest</text>
+    <text x="949" y="668" font-size="15" fill="#cbd5e1">Status, seeds, logs, coverage, hashes</text>
+
+    <rect x="40" y="738" width="1200" height="43" rx="10" fill="#e2e8f0"/>
+    <text x="58" y="765" font-size="16" font-weight="700">Additional signoff gates</text>
+    <text x="268" y="765" font-size="16" fill="#334155">Python unit tests · warm reset · negative / mutation tests · Verilator lint · Yosys synthesis</text>
+    <text x="40" y="806" font-size="14" fill="#64748b">This diagram follows an ordinary positive RTL test. Reset and deliberate-failure tests have their own acceptance rules.</text>
+  </g>
+</svg>

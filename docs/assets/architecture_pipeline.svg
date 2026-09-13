@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="870" viewBox="0 0 1280 870" role="img" aria-labelledby="title desc">
+  <title id="title">Five-stage pipeline, retained state, and dependency paths</title>
+  <desc id="desc">Instructions move through fetch, decode, execute, memory, and writeback. IF/ID, ID/EX, EX/MEM, and MEM/WB retain valid instruction records. EX redirects fetch and flushes younger work only when ID/EX fires. Ready EX/MEM results have forwarding priority over MEM/WB; an unready youngest match stalls. A separate WB-to-ID bypass supplies register reads. EX/MEM waits block younger progress, while MEM/WB drains without backpressure.</desc>
+  <defs>
+    <marker id="flow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#2563eb"/></marker>
+    <marker id="forward" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#0f766e"/></marker>
+    <marker id="bypass" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#7c3aed"/></marker>
+    <marker id="redirect" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#be123c"/></marker>
+  </defs>
+  <rect width="1280" height="870" fill="#f8fafc"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="48" y="51" font-size="31" font-weight="700" fill="#0f172a">Follow an instruction through the pipeline</text>
+    <text x="48" y="84" font-size="17" fill="#475569">Solid blue: normal progress · colored return paths: control and data dependencies</text>
+    <path d="M640 202 V145 H152 V202" fill="none" stroke="#be123c" stroke-width="2.5" marker-end="url(#redirect)"/>
+    <text x="152" y="129" font-size="16" font-weight="600" fill="#be123c">EX redirect → next PC; flush younger work, retain older work</text>
+    <text x="674" y="151" font-size="15" fill="#64748b">Resolves only on idex_fire · no architectural delay slot</text>
+
+    <g fill="#fff" stroke="#bfdbfe" stroke-width="2">
+      <rect x="48" y="205" width="208" height="220" rx="14"/>
+      <rect x="292" y="205" width="208" height="220" rx="14"/>
+      <rect x="536" y="205" width="208" height="220" rx="14"/>
+      <rect x="780" y="205" width="208" height="220" rx="14"/>
+      <rect x="1024" y="205" width="208" height="220" rx="14"/>
+    </g>
+    <g fill="#1e3a8a" font-size="25" font-weight="700">
+      <text x="66" y="244">01  IF</text><text x="310" y="244">02  ID</text><text x="554" y="244">03  EX</text><text x="798" y="244">04  MEM</text><text x="1042" y="244">05  WB</text>
+    </g>
+    <g fill="#475569" font-size="15" font-weight="600">
+      <text x="66" y="273">FETCH</text><text x="310" y="273">DECODE</text><text x="554" y="273">EXECUTE</text><text x="798" y="273">MEMORY</text><text x="1042" y="273">WRITEBACK</text>
+    </g>
+    <g fill="#334155" font-size="16">
+      <text x="66" y="308">PC + predictor</text><text x="66" y="335">Request instruction</text><text x="66" y="362">Buffer response</text>
+      <text x="310" y="308">Decode instruction</text><text x="310" y="335">Read GPR operands</text><text x="310" y="362">Check load-use risk</text>
+      <text x="554" y="308">Select operands</text><text x="554" y="335">ALU + branch / trap</text><text x="554" y="362">Build memory access</text>
+      <text x="798" y="308">Own bus transaction</text><text x="798" y="335">Select / extend load</text><text x="798" y="362">Read internal CSRs</text>
+      <text x="1042" y="308">Commit GPR result</text><text x="1042" y="335">Protect r0</text><text x="1042" y="362">Emit retirement event</text>
+    </g>
+    <g fill="#eff6ff">
+      <rect x="50" y="385" width="204" height="38" rx="10"/><rect x="294" y="385" width="204" height="38" rx="10"/><rect x="538" y="385" width="204" height="38" rx="10"/><rect x="782" y="385" width="204" height="38" rx="10"/><rect x="1026" y="385" width="204" height="38" rx="10"/>
+    </g>
+    <g fill="#1d4ed8" font-size="16" font-weight="600" text-anchor="middle">
+      <text x="152" y="411">IF/ID</text><text x="396" y="411">ID/EX</text><text x="640" y="411">EX/MEM</text><text x="884" y="411">MEM/WB</text><text x="1128" y="411">Registered trace</text>
+    </g>
+    <g fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#flow)">
+      <path d="M256 289 H289"/><path d="M500 289 H533"/><path d="M744 289 H777"/><path d="M988 289 H1021"/>
+    </g>
+    <text x="48" y="462" font-size="14" fill="#64748b">Blue footers name the retained</text>
+    <text x="48" y="484" font-size="14" fill="#64748b">record after each stage.</text>
+    <text x="48" y="522" font-size="14" fill="#64748b">A valid record carries identity,</text>
+    <text x="48" y="544" font-size="14" fill="#64748b">operands and control together.</text>
+
+    <path d="M884 426 V479 H623 V427" fill="none" stroke="#0f766e" stroke-width="2.5" marker-end="url(#forward)"/>
+    <text x="748" y="466" text-anchor="middle" font-size="15" font-weight="600" fill="#0f766e">Ready EX/MEM result: first priority</text>
+    <path d="M1128 426 V533 H580 V427" fill="none" stroke="#0f766e" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#forward)"/>
+    <text x="916" y="520" text-anchor="middle" font-size="15" fill="#0f766e">MEM/WB result: if no younger match</text>
+    <path d="M1195 426 V590 H396 V427" fill="none" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#bypass)"/>
+    <text x="795" y="577" text-anchor="middle" font-size="15" font-weight="600" fill="#7c3aed">WB → ID bypass supplies same-cycle register reads</text>
+    <text x="623" y="620" font-size="14" fill="#64748b">Return paths target EX operand selection and ID reads, respectively.</text>
+
+    <rect x="48" y="653" width="573" height="142" rx="14" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="70" y="685" font-size="20" font-weight="700" fill="#9a3412">When progress pauses</text>
+    <text x="70" y="715" font-size="16" fill="#334155">A load-use interlock holds IF/ID and bubbles ID/EX as the load advances.</text>
+    <text x="70" y="742" font-size="16" fill="#334155">An unfinished EX/MEM transaction prevents younger EX work firing.</text>
+    <text x="70" y="769" font-size="16" fill="#334155">An unready youngest producer blocks; its load address is not data.</text>
+    <rect x="643" y="653" width="589" height="142" rx="14" fill="#fff" stroke="#cbd5e1"/>
+    <text x="665" y="685" font-size="20" font-weight="700" fill="#0f172a">When progress resumes</text>
+    <text x="665" y="715" font-size="16" fill="#334155">An owned response completes MEM; its result can forward to EX.</text>
+    <text x="665" y="742" font-size="16" fill="#334155">Consume and refill may share an edge. MEM/WB drains every valid record.</text>
+    <text x="665" y="769" font-size="16" fill="#334155">Wrong-path fetch responses are drained and discarded after redirect.</text>
+    <text x="48" y="837" font-size="15" fill="#64748b">Conceptual datapath, not a cycle trace. One instruction per cycle is not guaranteed under memory waits, dependencies or redirects.</text>
+  </g>
+</svg>

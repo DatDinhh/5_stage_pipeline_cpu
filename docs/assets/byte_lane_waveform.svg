@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="1038" viewBox="0 0 1360 1038" role="img" aria-labelledby="title desc">
+<title id="title">Byte lanes: select the addressed byte before sign extension</title>
+<desc id="desc">Real Icarus VCD transitions. Fault-injected isolated mutation compared with current repaired RTL. Absolute simulation time in nanoseconds; delta updates at a timestamp show their final settled value.</desc>
+<style>text{font-family:Arial,sans-serif}.mono{font-family:Consolas,monospace}</style>
+<rect width="1360" height="1038" fill="#f5f7fb"/>
+<text x="44" y="43" font-size="13" fill="#526780" >MEASURED RTL WAVEFORMS / TWO CONTROLLED RUNS</text>
+<text x="44" y="82" font-size="28" fill="#11263f" >Byte lanes: select the addressed byte before sign extension</text>
+<text x="44" y="111" font-size="16" fill="#25364b" >lb r3, 2(r10), r10 = 0x40     |     RAM word = 0x80ff7f01; offset 2 is 0xff, so signed LB must produce 0xffffffff</text>
+<text x="44" y="139" font-size="13" fill="#526780" >True VCD transitions · 10 ns clock · axes show absolute simulation time (ns) · final delta value at each timestamp</text>
+<rect x="28" y="164" width="1304" height="384" rx="12" fill="white" stroke="#d8e0ea"/>
+<rect x="28" y="164" width="7" height="384" rx="3" fill="#bb3c42"/>
+<text x="48" y="194" font-size="18" fill="#bb3c42" >Fault injected / byte offset 2 selects bits 15:8</text>
+<text x="48" y="221" font-size="14" fill="#25364b" >Checked retirement: r3 = 0x0000007f; independent ISS expects 0xffffffff. Mutation killed by TRACE_MISMATCH.</text>
+<text x="48" y="243" font-size="12" fill="#65778b" >Signal / actual RTL name</text>
+<rect x="555.5" y="246" width="253.5" height="288" fill="#fff3d9"/>
+<line x1="302" y1="244" x2="302" y2="532" stroke="#e4eaf2"/>
+<text x="302" y="240" font-size="12" fill="#65778b" text-anchor="middle">155</text>
+<line x1="555.5" y1="244" x2="555.5" y2="532" stroke="#e4eaf2"/>
+<text x="555.5" y="240" font-size="12" fill="#65778b" text-anchor="middle">165</text>
+<line x1="809" y1="244" x2="809" y2="532" stroke="#e4eaf2"/>
+<text x="809" y="240" font-size="12" fill="#65778b" text-anchor="middle">175</text>
+<line x1="1062.5" y1="244" x2="1062.5" y2="532" stroke="#e4eaf2"/>
+<text x="1062.5" y="240" font-size="12" fill="#65778b" text-anchor="middle">185</text>
+<line x1="1316" y1="244" x2="1316" y2="532" stroke="#e4eaf2"/>
+<text x="1316" y="240" font-size="12" fill="#65778b" text-anchor="middle">195</text>
+<line x1="1062.5" y1="244" x2="1062.5" y2="532" stroke="#bb3c42" stroke-dasharray="4 4"/>
+<text x="48" y="270" font-size="13" fill="#25364b" class="mono">clk</text>
+<polyline points="302,258 428.75,258 428.75,275 555.5,275 555.5,258 682.25,258 682.25,275 809,275 809,258 935.75,258 935.75,275 1062.5,275 1062.5,258 1189.25,258 1189.25,275 1316,275" fill="none" stroke="#bb3c42" stroke-width="2"/>
+<text x="48" y="306" font-size="13" fill="#25364b" class="mono">dbus_req_addr</text>
+<path d="M 302,302 L 306,292 H 1312 L 1316,302 L 1312,313 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="809" y="307" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x00000042</text>
+<text x="48" y="342" font-size="13" fill="#25364b" class="mono">dbus_resp_valid</text>
+<polyline points="302,347 555.5,347 555.5,330 809,330 809,347 1062.5,347 1062.5,330 1316,330" fill="none" stroke="#bb3c42" stroke-width="2"/>
+<text x="48" y="378" font-size="13" fill="#25364b" class="mono">dbus_resp_rdata (raw word)</text>
+<path d="M 302,374 L 306,364 H 1312 L 1316,374 L 1312,385 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="809" y="379" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x80ff7f01</text>
+<text x="48" y="414" font-size="13" fill="#25364b" class="mono">external_load_value</text>
+<path d="M 302,410 L 306,400 H 1312 L 1316,410 L 1312,421 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="809" y="415" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x0000007f</text>
+<text x="48" y="450" font-size="13" fill="#25364b" class="mono">trace_valid</text>
+<polyline points="302,455 555.5,455 555.5,438 809,438 809,455 1062.5,455 1062.5,438 1316,438" fill="none" stroke="#bb3c42" stroke-width="2"/>
+<text x="48" y="486" font-size="13" fill="#25364b" class="mono">trace_pc</text>
+<path d="M 302,482 L 306,472 H 551.5 L 555.5,482 L 551.5,493 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="428.75" y="487" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x04</text>
+<path d="M 555.5,482 L 559.5,472 H 1058.5 L 1062.5,482 L 1058.5,493 H 559.5 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="809" y="487" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x08</text>
+<path d="M 1062.5,482 L 1066.5,472 H 1312 L 1316,482 L 1312,493 H 1066.5 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="1189.25" y="487" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x0c</text>
+<text x="48" y="522" font-size="13" fill="#25364b" class="mono">trace_rd_data</text>
+<path d="M 302,518 L 306,508 H 551.5 L 555.5,518 L 551.5,529 H 306 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="428.75" y="523" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x00000001</text>
+<path d="M 555.5,518 L 559.5,508 H 1312 L 1316,518 L 1312,529 H 559.5 Z" fill="#f8fafc" stroke="#bb3c42" stroke-width="1.2"/>
+<text x="935.75" y="523" font-size="13" fill="#bb3c42" class="mono" text-anchor="middle">0x0000007f</text>
+<text x="48" y="543" font-size="12" fill="#526780" >Gold band: owned load response / byte selection. Dashed line: checked retirement at PC 0xc, cycle 13.</text>
+<rect x="28" y="560" width="1304" height="384" rx="12" fill="white" stroke="#d8e0ea"/>
+<rect x="28" y="560" width="7" height="384" rx="3" fill="#167755"/>
+<text x="48" y="590" font-size="18" fill="#167755" >Repaired RTL / byte offset 2 selects bits 23:16</text>
+<text x="48" y="617" font-size="14" fill="#25364b" >Checked retirement: r3 = 0xffffffff; independent ISS expects 0xffffffff. Complete trace and final architectural state PASS.</text>
+<text x="48" y="639" font-size="12" fill="#65778b" >Signal / actual RTL name</text>
+<rect x="555.5" y="642" width="253.5" height="288" fill="#fff3d9"/>
+<line x1="302" y1="640" x2="302" y2="928" stroke="#e4eaf2"/>
+<text x="302" y="636" font-size="12" fill="#65778b" text-anchor="middle">155</text>
+<line x1="555.5" y1="640" x2="555.5" y2="928" stroke="#e4eaf2"/>
+<text x="555.5" y="636" font-size="12" fill="#65778b" text-anchor="middle">165</text>
+<line x1="809" y1="640" x2="809" y2="928" stroke="#e4eaf2"/>
+<text x="809" y="636" font-size="12" fill="#65778b" text-anchor="middle">175</text>
+<line x1="1062.5" y1="640" x2="1062.5" y2="928" stroke="#e4eaf2"/>
+<text x="1062.5" y="636" font-size="12" fill="#65778b" text-anchor="middle">185</text>
+<line x1="1316" y1="640" x2="1316" y2="928" stroke="#e4eaf2"/>
+<text x="1316" y="636" font-size="12" fill="#65778b" text-anchor="middle">195</text>
+<line x1="1062.5" y1="640" x2="1062.5" y2="928" stroke="#167755" stroke-dasharray="4 4"/>
+<text x="48" y="666" font-size="13" fill="#25364b" class="mono">clk</text>
+<polyline points="302,654 428.75,654 428.75,671 555.5,671 555.5,654 682.25,654 682.25,671 809,671 809,654 935.75,654 935.75,671 1062.5,671 1062.5,654 1189.25,654 1189.25,671 1316,671" fill="none" stroke="#167755" stroke-width="2"/>
+<text x="48" y="702" font-size="13" fill="#25364b" class="mono">dbus_req_addr</text>
+<path d="M 302,698 L 306,688 H 1312 L 1316,698 L 1312,709 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="809" y="703" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x00000042</text>
+<text x="48" y="738" font-size="13" fill="#25364b" class="mono">dbus_resp_valid</text>
+<polyline points="302,743 555.5,743 555.5,726 809,726 809,743 1062.5,743 1062.5,726 1316,726" fill="none" stroke="#167755" stroke-width="2"/>
+<text x="48" y="774" font-size="13" fill="#25364b" class="mono">dbus_resp_rdata (raw word)</text>
+<path d="M 302,770 L 306,760 H 1312 L 1316,770 L 1312,781 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="809" y="775" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x80ff7f01</text>
+<text x="48" y="810" font-size="13" fill="#25364b" class="mono">external_load_value</text>
+<path d="M 302,806 L 306,796 H 805 L 809,806 L 805,817 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="555.5" y="811" font-size="13" fill="#167755" class="mono" text-anchor="middle">0xffffffff</text>
+<path d="M 809,806 L 813,796 H 1312 L 1316,806 L 1312,817 H 813 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1062.5" y="811" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x000000ff</text>
+<text x="48" y="846" font-size="13" fill="#25364b" class="mono">trace_valid</text>
+<polyline points="302,851 555.5,851 555.5,834 809,834 809,851 1062.5,851 1062.5,834 1316,834" fill="none" stroke="#167755" stroke-width="2"/>
+<text x="48" y="882" font-size="13" fill="#25364b" class="mono">trace_pc</text>
+<path d="M 302,878 L 306,868 H 551.5 L 555.5,878 L 551.5,889 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="428.75" y="883" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x04</text>
+<path d="M 555.5,878 L 559.5,868 H 1058.5 L 1062.5,878 L 1058.5,889 H 559.5 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="809" y="883" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x08</text>
+<path d="M 1062.5,878 L 1066.5,868 H 1312 L 1316,878 L 1312,889 H 1066.5 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1189.25" y="883" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x0c</text>
+<text x="48" y="918" font-size="13" fill="#25364b" class="mono">trace_rd_data</text>
+<path d="M 302,914 L 306,904 H 551.5 L 555.5,914 L 551.5,925 H 306 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="428.75" y="919" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x00000001</text>
+<path d="M 555.5,914 L 559.5,904 H 1058.5 L 1062.5,914 L 1058.5,925 H 559.5 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="809" y="919" font-size="13" fill="#167755" class="mono" text-anchor="middle">0x0000007f</text>
+<path d="M 1062.5,914 L 1066.5,904 H 1312 L 1316,914 L 1312,925 H 1066.5 Z" fill="#f8fafc" stroke="#167755" stroke-width="1.2"/>
+<text x="1189.25" y="919" font-size="13" fill="#167755" class="mono" text-anchor="middle">0xffffffff</text>
+<text x="48" y="939" font-size="12" fill="#526780" >Gold band: owned load response / byte selection. Dashed line: checked retirement at PC 0xc, cycle 13.</text>
+<text x="44" y="972" font-size="14" fill="#25364b" >Fault injection is a deliberate regression reproduction in a copied source tree; repaired RTL is checked against the independent ISS.</text>
+<text x="44" y="997" font-size="12" fill="#526780" >VCD/CSV paths, SHA-256 hashes and exact decision samples: showcase_evidence.json</text>
+</svg>
